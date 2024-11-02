@@ -1,0 +1,44 @@
+type Product {
+    id: ID,
+    name: String ,
+    category: String ,
+    price: Float,
+    stock: Int,
+}
+
+type Query {
+    getAllProducts: [Product]
+    getProductByCategory(category:String):[Product]
+
+}
+type  User{
+    userId:ID!
+    name:String
+    email:String
+    phone:String
+    password:String
+    orders:[Order]
+
+
+}
+type  Order{
+  orderId:ID!
+    details:String
+    address:String
+    price:Int
+    user:User
+}
+type Mutation{
+    updateStock(id  :ID!,stock:Int):Product
+    create( name :String ,email:String ,phone: String ,password:String ):[User]
+    createOrder(details:String ,address:String, price:Int):Order
+    createUser(userDto:UserDto):User
+}
+ input UserDto{
+
+     name:String
+     email:String
+     phone:String
+     password :String
+
+ }
